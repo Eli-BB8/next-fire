@@ -10,7 +10,7 @@ export default function EnterPage({ }) {
   return (
     <main>
       {user ? 
-        !username ? <UsernameForm /> : <SignOutButton />
+        !user ? <UsernameForm /> : <SignOutButton /> // user = username
         :
         <SignInButton />
       }

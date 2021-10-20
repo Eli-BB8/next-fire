@@ -5,7 +5,7 @@ import { UserContext } from '../lib/context';
 
 export default function Navbar({ }) {
   const { user , username } = useContext(UserContext);
-
+  {console.log(username, user)}
   return (
     <nav className="navbar">
       <ul>
@@ -16,7 +16,7 @@ export default function Navbar({ }) {
         </li>
 
         {/* user is signed in and has username */}
-        {username &&
+        {user && // user = username
           <>
             <li className="push-left">
               <Link href="/admin" passHref>
@@ -26,12 +26,12 @@ export default function Navbar({ }) {
             <li>
               <Link href={`/${username}`} passHref>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={user?.photoURL} alt={`${username}`}/>
+                <img src={user?._delegate.photoURL} alt={`${username}`}/>
               </Link>
             </li>
           </>
         }
-        {!username && (
+        {!user && ( // user = username
           <Link href="/enter" passHref>
             <button className="btn-blue">Login</button>
           </Link>
