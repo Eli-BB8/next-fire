@@ -5,7 +5,7 @@ import { UserContext } from '../lib/context';
 
 export default function Navbar({ }) {
   const { user , username } = useContext(UserContext);
-  {console.log(username, user)}
+  // {console.log(username, user?.uid)}
   return (
     <nav className="navbar">
       <ul>
@@ -16,7 +16,7 @@ export default function Navbar({ }) {
         </li>
 
         {/* user is signed in and has username */}
-        {user && // user = username
+        {username && // user = username
           <>
             <li className="push-left">
               <Link href="/admin" passHref>
@@ -31,7 +31,7 @@ export default function Navbar({ }) {
             </li>
           </>
         }
-        {!user && ( // user = username
+        {!username && ( // user = username
           <Link href="/enter" passHref>
             <button className="btn-blue">Login</button>
           </Link>
